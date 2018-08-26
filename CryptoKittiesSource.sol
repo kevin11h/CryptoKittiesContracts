@@ -8,4 +8,26 @@ pragma solidity ^0.4.11;
  *
  * @title Ownable
  * @dev The Ownable contract has owner address, and provides basic 
- * functions, this simplifies 
+ * functions, this simplifies the implementation of "user permissions"
+ */
+ 
+contract Ownable {
+  address public owner;
+  
+  /**
+   * @dev the Owner contract sets the original `owner` of the contract account
+   */
+   
+  function Ownable() {
+    owner = msg.sender;
+  }
+  
+  /**
+   * @dev Throws if called by any account other than the owner.
+   */
+   modifier onlyOwner() {
+      require(msg.sender == owner);
+      _;
+   }
+   
+}
